@@ -104,7 +104,8 @@ export default function AnimatedListDemo({
   useEffect(() => {
     pusherClient.subscribe("test");
     const notificationHandler = (data: NotificationType) => {
-      setNotifications((prev) => [data, ...prev]);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      setNotifications((prev: Item[]) => [data, ...prev]);
     };
 
     pusherClient.bind("notification:new", notificationHandler);
