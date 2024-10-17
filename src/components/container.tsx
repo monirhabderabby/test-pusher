@@ -105,7 +105,7 @@ export default function AnimatedListDemo({
     pusherClient.subscribe("test");
     const notificationHandler = (data: NotificationType) => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      setNotifications((prev: Item[]) => [data, ...prev]);
+      setNotifications((prev: any[]) => [data, ...notifications]);
     };
 
     pusherClient.bind("notification:new", notificationHandler);
