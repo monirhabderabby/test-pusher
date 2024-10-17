@@ -8,6 +8,7 @@ export const createNotification = async (data: NotificationType) => {
     await pusherServer.trigger("test", "notification:new", data);
     return true;
   } catch (error: any) {
+    console.log(error);
     return null;
   }
 };
