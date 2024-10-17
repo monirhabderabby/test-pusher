@@ -8,11 +8,11 @@ import { Form, FormControl, FormField, FormItem } from "./ui/form";
 import { Input } from "./ui/input";
 
 const formSchema = z.object({
-  name: z.string().optional(),
-  description: z.string().optional(),
-  time: z.string().optional(),
-  icon: z.string().optional(),
-  color: z.string().optional(),
+  name: z.string(),
+  description: z.string(),
+  time: z.string(),
+  icon: z.string(),
+  color: z.string(),
 });
 
 export type NotificationType = z.infer<typeof formSchema>;

@@ -3,7 +3,7 @@
 import { pusherClient } from "@/lib/pusher";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import FormContainer, { NotificationType } from "./form";
 
 interface Item {
@@ -104,7 +104,6 @@ export default function AnimatedListDemo({
   useEffect(() => {
     pusherClient.subscribe("test");
     const notificationHandler = (data: NotificationType) => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       setNotifications([data, ...notifications]);
     };
 
@@ -114,7 +113,7 @@ export default function AnimatedListDemo({
       pusherClient.unsubscribe("test");
       pusherClient.unbind("notification:new", notificationHandler);
     };
-  }, []);
+  }, [notifications]);
   return (
     <div className="flex ">
       <div
@@ -143,7 +142,7 @@ export default function AnimatedListDemo({
   );
 }
 
-const Anim = ({ children }: { children: ReactNode }) => {
+const Anim = ({ children }: { children: React.ReactNode }) => {
   return (
     <motion.div
       initial={{ scale: 0, opacity: 0 }}
